@@ -1,0 +1,47 @@
+name: Desplegar en GitHub Pages
+
+on:
+  # Se dispara al hacer push a la rama principal
+  push:
+    branches:
+      - main
+      - master   # por si el repo usa "master"
+
+  # Permite ejecutarlo manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+# Permisos necesarios para publicar en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita despliegues simultáneos
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Publicar en GitHub Pages
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: 📥 Descargar el código
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 📦 Empaquetar los archivos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Sube todo el repositorio (es un sitio estático puro)
+          path: '.'
+
+      - name: 🚀 Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

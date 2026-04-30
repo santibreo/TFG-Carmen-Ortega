@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Plataforma educativa con vídeos, apuntes y cuestionarios." />
+  <title>EduSite</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ── Sidebar ─────────────────────────────────── -->
+  <aside id="sidebar" role="navigation" aria-label="Temas">
+    <div class="sidebar-header">
+      <div id="site-title">SiteTitle</div>
+      <div id="site-subtitle">Tu espacio de aprendizaje</div>
+    </div>
+    <div class="sidebar-section-label">Temas</div>
+    <nav id="topic-nav" aria-label="Lista de temas"></nav>
+    <div class="sidebar-section-label">Problemas</div>
+    <nav id="quiz-nav" aria-label="Lista de problemas"></nav>
+  </aside>
+
+  <!-- ── Overlay (cierra sidebar en móvil) ───────── -->
+  <div id="sidebar-overlay" role="presentation"></div>
+
+  <!-- ── Panel principal ─────────────────────────── -->
+  <div class="main-wrapper">
+
+    <!-- Topbar (visible sólo en móvil) -->
+    <header class="topbar">
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <span class="topbar-brand">SiteTitle</span>
+    </header>
+
+    <!-- Contenido dinámico -->
+    <main id="main-content" role="main" aria-live="polite">
+      <!-- Renderizado por app.js -->
+    </main>
+
+  </div>
+</div>
+
+<!-- Scripts: primero el contenido, luego la app -->
+<script src="assets/js/content.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
