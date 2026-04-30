@@ -171,7 +171,7 @@ iframe  { border: none; }
 }
 
 .topbar {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 12px;
   padding: 0 24px;
@@ -181,15 +181,7 @@ iframe  { border: none; }
   flex-shrink: 0;
 }
 
-@media (max-width : 320px) {
-
-  .topbar {
-    display: flex;
-  }
-}
-
 #menu-toggle {
-  display: none;
   flex-direction: column;
   gap: 5px;
   padding: 8px;
@@ -552,21 +544,48 @@ iframe  { border: none; }
     left: 0;
     height: 100%;
     transform: translateX(-100%);
+    width: 85%;
+    max-width: 280px;
+    box-shadow: var(--shadow-md);
   }
-  #sidebar.open { transform: translateX(0); box-shadow: var(--shadow-md); }
+  #sidebar.open { transform: translateX(0); }
   #sidebar-overlay { display: block; }
 
   #menu-toggle { display: flex; }
   .topbar-brand { display: block; }
 
-  #main-content { padding: 20px 16px; }
-  .topic-title { font-size: 1.5rem; }
-  .section-tab { padding: 8px 12px; font-size: .82rem; }
-  .text-content { padding: 20px; }
+  #main-content { padding: 16px 12px; }
+  .topic-title { font-size: 1.4rem; }
+  .section-tab { padding: 8px 12px; font-size: .8rem; }
+  .text-content { padding: 16px; }
+  .quiz-question { padding: 16px; }
+  .quiz-body { flex-direction: column; align-items: flex-start; }
   .content-nav { flex-wrap: wrap; }
+}
+
+@media (min-width: 768px) {
+  .topbar { display: none; }
+  #sidebar { transform: translateX(0); }
 }
 
 @media (max-width: 480px) {
   .content-tab span:not(.sr-only) { display: none; }
   .content-tab { padding: 8px 12px; }
+  .welcome h2 { font-size: 1.4rem; }
+  .topic-title { font-size: 1.3rem; }
+  .text-content h3 { font-size: 1.1rem; }
+  .video-title { font-size: 1rem; }
+  .option-letter { width: 22px; height: 22px; font-size: .65rem; }
+  .video-item { padding: 10px 12px; }
+  .video-item-num { width: 24px; height: 24px; font-size: .7rem; }
+}
+
+@media (max-width: 360px) {
+  #sidebar { width: 90%; }
+  #main-content { padding: 12px 10px; }
+  .topic-title { font-size: 1.2rem; }
+  .section-tab { padding: 6px 10px; font-size: .75rem; }
+  .text-content { padding: 12px; }
+  .quiz-question { padding: 12px; }
+  .result-score { font-size: 2.5rem; }
 }
